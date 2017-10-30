@@ -33,6 +33,6 @@ public class User {
     private Address address;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private UserStatus userStatus;
 
 }

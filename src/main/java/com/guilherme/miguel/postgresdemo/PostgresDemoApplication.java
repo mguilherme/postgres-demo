@@ -2,7 +2,7 @@ package com.guilherme.miguel.postgresdemo;
 
 import com.guilherme.miguel.postgresdemo.address.Address;
 import com.guilherme.miguel.postgresdemo.address.AddressRepository;
-import com.guilherme.miguel.postgresdemo.user.Status;
+import com.guilherme.miguel.postgresdemo.user.UserStatus;
 import com.guilherme.miguel.postgresdemo.user.User;
 import com.guilherme.miguel.postgresdemo.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -37,19 +37,19 @@ public class PostgresDemoApplication {
             User user1 = new User();
             user1.setName("John");
             user1.setEmail("John@my-mail.com");
-            user1.setStatus(Status.ACTIVE);
+            user1.setUserStatus(UserStatus.ACTIVE);
             user1.setAddress(address1);
 
             User user2 = new User();
             user2.setName("Peter");
             user2.setEmail("peter@my-mail.com");
-            user2.setStatus(Status.ACTIVE);
+            user2.setUserStatus(UserStatus.ACTIVE);
             user2.setAddress(address1);
 
             User user3 = new User();
             user3.setName("Mary");
             user3.setEmail("mary@my-mail.com");
-            user3.setStatus(Status.INACTIVE);
+            user3.setUserStatus(UserStatus.INACTIVE);
             user3.setAddress(address2);
 
             userRepository.save(Stream.of(user1, user2, user3).collect(Collectors.toList()));
