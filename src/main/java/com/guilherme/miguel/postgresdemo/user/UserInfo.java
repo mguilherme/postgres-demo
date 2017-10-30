@@ -12,6 +12,8 @@ public class UserInfo {
 
     private int ttl;
 
+    private int age;
+
     private String notes;
 
     private List<Integer> luckyNumbers;

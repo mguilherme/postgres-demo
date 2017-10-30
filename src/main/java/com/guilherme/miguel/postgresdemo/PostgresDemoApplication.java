@@ -34,10 +34,32 @@ public class PostgresDemoApplication {
 
             //Info
             UserInfo userInfo1 = new UserInfo();
-            userInfo1.setTtl(3);
+            userInfo1.setTtl(2);
             userInfo1.setNotes("This is a test note");
             userInfo1.setLuckyNumbers(Stream.of(3, 5, 6).collect(Collectors.toList()));
             userInfo1.setAdditionalInfo(new AdditionalInfo("My additional info."));
+            userInfo1.setAge(20);
+
+            UserInfo userInfo2 = new UserInfo();
+            userInfo2.setTtl(1);
+            userInfo2.setNotes("This is a big note");
+            userInfo2.setLuckyNumbers(Stream.of(5, 10, 9, 4).collect(Collectors.toList()));
+            userInfo2.setAdditionalInfo(new AdditionalInfo("more info."));
+            userInfo2.setAge(25);
+
+            UserInfo userInfo3 = new UserInfo();
+            userInfo3.setTtl(4);
+            userInfo3.setNotes("This is another test note");
+            userInfo3.setLuckyNumbers(Stream.of(76, 7, 1).collect(Collectors.toList()));
+            userInfo3.setAdditionalInfo(new AdditionalInfo("hidden info."));
+            userInfo3.setAge(30);
+
+            UserInfo userInfo4 = new UserInfo();
+            userInfo4.setTtl(5);
+            userInfo4.setNotes("More notes");
+            userInfo4.setLuckyNumbers(Stream.of(22, 1, 34, 76).collect(Collectors.toList()));
+            userInfo4.setAdditionalInfo(new AdditionalInfo("such info."));
+            userInfo4.setAge(32);
 
             // Users
             User user1 = new User();
@@ -45,7 +67,7 @@ public class PostgresDemoApplication {
             user1.setEmail("John@my-mail.com");
             user1.setUserStatus(UserStatus.ACTIVE);
             user1.setAddress(address1);
-            user1.setUserInfo(userInfo1);
+            user1.setUserInfo(userInfo2);
 
             User user2 = new User();
             user2.setName("Peter");
@@ -59,12 +81,20 @@ public class PostgresDemoApplication {
             user3.setEmail("mary@my-mail.com");
             user3.setUserStatus(UserStatus.INACTIVE);
             user3.setAddress(address2);
-            user3.setUserInfo(userInfo1);
+            user3.setUserInfo(userInfo3);
+
+            User user4 = new User();
+            user4.setName("Kate");
+            user4.setEmail("kate@my-mail.com");
+            user4.setUserStatus(UserStatus.INACTIVE);
+            user4.setAddress(address1);
+            user4.setUserInfo(userInfo4);
 
             userRepository.save(Stream.of(user1, user2, user3).collect(Collectors.toList()));
 
             userRepository.findAll().forEach(System.out::println);
 
+            userRepository.findByAgeGreaterThan(25);
 
         };
     }
