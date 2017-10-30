@@ -6,6 +6,7 @@ Column `info` from `table` users will contain:
 {
   "ttl": 3,
   "notes": "This is a test note",
+  "age": 30,
   "luckyNumbers": [
     3,
     5,
