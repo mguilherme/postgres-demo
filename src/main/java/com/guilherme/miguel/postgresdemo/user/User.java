@@ -1,8 +1,12 @@
 package com.guilherme.miguel.postgresdemo.user;
 
 import com.guilherme.miguel.postgresdemo.address.Address;
+import com.guilherme.miguel.postgresdemo.config.hibernate.types.JSONBUserType;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -14,6 +18,9 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name = "users")
+@TypeDef(name = "userJsonb", typeClass = JSONBUserType.class, parameters = {
+        @Parameter(name = JSONBUserType.CLASS, value = "com.guilherme.miguel.postgresdemo.user.UserInfo")
+})
 public class User {
 
     @Id
@@ -33,6 +40,11 @@ public class User {
     private Address address;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private UserStatus userStatus;
+
+    @Type(type = "userJsonb")
+    @Column(name = "info")
+    private UserInfo userInfo;
 
 }

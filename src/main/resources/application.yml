@@ -4,5 +4,7 @@ spring:
     username: postgres
     password: postgres
   jpa:
+    show-sql: true
+    database-platform: com.guilherme.miguel.postgresdemo.config.hibernate.dialect.JSONBPostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
