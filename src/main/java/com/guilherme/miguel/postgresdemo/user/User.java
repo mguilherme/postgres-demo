@@ -2,6 +2,7 @@ package com.guilherme.miguel.postgresdemo.user;
 
 import com.guilherme.miguel.postgresdemo.address.Address;
 import com.guilherme.miguel.postgresdemo.config.hibernate.types.JSONBUserType;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -18,9 +19,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name = "users")
-@TypeDef(name = "userJsonb", typeClass = JSONBUserType.class, parameters = {
-        @Parameter(name = JSONBUserType.CLASS, value = "com.guilherme.miguel.postgresdemo.user.UserInfo")
-})
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class User {
 
     @Id
@@ -43,8 +42,8 @@ public class User {
     @Column(name = "status")
     private UserStatus userStatus;
 
-    @Type(type = "userJsonb")
-    @Column(name = "info")
+    @Type(type = "jsonb")
+    @Column(name = "info", columnDefinition = "jsonb")
     private UserInfo userInfo;
 
 }

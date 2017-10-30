@@ -94,7 +94,7 @@ public class PostgresDemoApplication {
 
             userRepository.findAll().forEach(System.out::println);
 
-            userRepository.findByAgeGreaterThan(25);
+            userRepository.findByAgeGreaterThan(25).forEach(System.out::println);
 
         };
     }
