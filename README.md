@@ -1,5 +1,5 @@
 # Postgres Demo
-Spring Boot with Postgres and jsonb support.
+Spring Boot with Postgres and **jsonb** support.
 Column `info` from `table` users will contain:
 
 ```json
