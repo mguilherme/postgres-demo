@@ -11,10 +11,10 @@ import java.util.List;
  */
 public interface UserRepository extends CrudRepository<User, String>, UserRepositoryCustom {
 
+    // Param has to be String
     @Query(value = "SELECT * FROM users WHERE info->>'age' < :age", nativeQuery = true)
     List<User> findByAgeLessThan(@Param("age") String age);
 
-    // Param has to be String
     @Query(value = "SELECT * FROM users WHERE name = :name", nativeQuery = true)
     List<User> userByName(@Param("name") String name);
 
