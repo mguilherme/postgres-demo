@@ -31,5 +31,6 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 //        entityManager.createNativeQuery("SELECT * FROM users WHERE name = 'John'", User.class).getResultList();
 //        entityManager.createNativeQuery("SELECT * FROM users WHERE info->>'ttl' > :ttl", User.class).setParameter("ttl", "2") .getResultList();
 //        entityManager.createNativeQuery("SELECT * FROM users WHERE info->>'age' >= :age", User.class).setParameter("age", "25") .getResultList();
+//        SELECT * FROM merchants m WHERE m.profile -> 'company' ->> 'name' ilike '%XPTO%';    
 
 }
